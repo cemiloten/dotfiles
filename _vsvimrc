@@ -1,0 +1,32 @@
+set backspace=indent,eol,start
+set history=200
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set hlsearch
+
+map Y y$
+imap jj <esc>
+
+let mapleader = ","
+nnoremap <leader><space> :nohlsearch<CR>
+
+" yank to clipboard (like ctrl+c)
+noremap <leader>y "+y
+
+" paste from clipboard (like ctrl+v)
+noremap <leader>p "+p
+
+" Visual Studio specific mappings
+set vsvim_useeditorindent
+set vsvim_useeditordefaults
+
+map gi :vsc Edit.GoToImplementation<cr>
+map gr :vsc Edit.FindAllReferences<cr>
+map gp :vsc Edit.PeekDefinition<cr>
+nnoremap <leader>m :vsc Edit.NextMethod<cr>
+nnoremap <leader>M :vsc Edit.PreviousMethod<cr>
+nnoremap <leader>b :vsc Debug.ToggleBreakpoint<cr>
+nnoremap R : vsc Refactor.Rename<cr>

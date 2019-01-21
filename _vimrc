@@ -1,23 +1,46 @@
-set nocompatible
-filetype indent plugin on
-syntax on
+if has('win32') || has('win64')
+    let $VIMHOME = $VIM."/vimfiles"
+else
+    let $VIMHOME = $HOME."\\.vim"
+endif
 
+set nocompatible
+filetype off
 set langmenu=en_US.UTF-8
 let $LANG = 'en_US'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 source $VIMRUNTIME/vimrc_example.vim
 
+set rtp^=$VIMHOME/bundle/ctrlp.vim
+set rtp+=$VIMHOME/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-abolish'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'morhetz/gruvbox'
+
+call vundle#end()
+filetype indent plugin on
+
+" YouCompleteMe settings
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_complete_in_comments = 1
+let g:ycm_confirm_extra_conf = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1 " turn on tag completion
+set completeopt-=preview
+let g:ycm_cache_omnifunc = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+
+syntax on
+set encoding=utf-8
 set guifont=Source\ Code\ Pro\ Semibold:h10
 colorscheme gruvbox
-
-if has("gui_running")
-    set lines=60 columns=160
-endif
-
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
 
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
@@ -33,30 +56,41 @@ set laststatus=2 " Always display the status line
 set number " show line numbers
 set showcmd " show command in bottom bar
 set cursorline " highlight current line
+set relativenumber
 set mouse=a " enable use of the mouse for all modes
 set cmdheight=2 " command window height
-"set visualbell " flash the screen instead of beeping on errors
 
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
-set path+=**
 set wildmenu " visual autocomplete for command menu
 set lazyredraw " redraw only when needed
 set showmatch " highlight matching [{()}]
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" SEARCHING
+set ignorecase
+set smartcase
+set gdefault
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" REMAP KEYS
+let mapleader = ","
+
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
 map Y y$
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
+" yank to clipboard (like ctrl+c)
+noremap <leader>y "+y
+
+" paste from clipboard (like ctrl+v)
+noremap <leader>p "+p
 
 "search for occurences of visual selection
 :vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
@@ -94,4 +128,3 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
-
