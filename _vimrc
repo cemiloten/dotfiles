@@ -122,6 +122,10 @@ nnoremap <leader>d "_d<CR>
 " repeat last command
 map <leader>. :@:<CR>
 
+" insert newline at before/after cursor
+nnoremap <leader>n a<CR><esc>
+nnoremap <leader>N i<CR><esc>
+
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
