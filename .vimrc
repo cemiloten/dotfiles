@@ -7,11 +7,14 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-abolish'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" Color schemes
 Plugin 'junegunn/seoul256.vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'ayu-theme/ayu-vim'
 call vundle#end()
 filetype indent plugin on
 
@@ -24,9 +27,13 @@ set completeopt-=preview
 let g:ycm_cache_omnifunc = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 
+" cpp enhanced highlight settings
+let g:cpp_class_scope_highlight = 1
+"let g:cpp_class_decl_highlight = 1
+
 syntax on
 set encoding=utf-8
-set guifont=Monaco:h13
+set guifont=Menlo:h13
 colorscheme gruvbox
 
 set history=1024
@@ -82,14 +89,13 @@ imap ,, <esc>
 " Map Y to yank until EOL, rather than act as yy
 map Y y$
 map 0 ^
-nnoremap X "_dd
 " when )} is added automatically quick move without exiting insert mode
 inoremap <S-space> <Right>
 
 noremap <S-j> <C-d>
 noremap <S-k> <C-u>
-noremap <C-j> 3<C-e>
-noremap <C-k> 3<C-y>
+noremap <C-j> 4<C-e>
+noremap <C-k> 4<C-y>
 noremap <leader>j gt
 noremap <leader>k gT
 noremap <leader>h <C-w>h
@@ -105,9 +111,8 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 
 " delete without storing in any buffers
-nnoremap <leader>d "_d<CR>
+nnoremap <leader>d "_d
 
-" repeat last command
 map <leader>. :@:<CR>
 
 " Visual mode pressing * or # searches for the current selection
