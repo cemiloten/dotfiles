@@ -8,19 +8,13 @@ set incsearch
 set hlsearch
 set gdefault
 
-set splitbelow
-set splitright
 set scrolloff=3 " keep 3 lines below and above cursor
-set linebreak   " show wrap at word boundaries
 
 map Y y$
 map 0 ^
 imap ,, <esc>
 " when )} is added automatically quick move without exiting insert mode
 inoremap <S-space> <Right>
-
-" delete whole line without copying
-nnoremap X "_dd
 
 let mapleader = ","
 nnoremap <leader><space> :nohlsearch<CR>
@@ -37,14 +31,10 @@ nnoremap <leader>d "_d
 " redo last command
 map <leader>. :@:<CR>
 
-" insert newline at before/after cursor
-nnoremap <leader>n a<CR><esc>
-nnoremap <leader>N i<CR><esc>
-
 noremap <S-j> <C-d>
 noremap <S-k> <C-u>
-noremap <C-j> 3<C-e>
-noremap <C-k> 3<C-y>
+noremap <C-j> 4<C-e>
+noremap <C-k> 4<C-y>
 noremap <leader>j gt
 noremap <leader>k gT
 noremap <leader>h <C-w>h
@@ -70,24 +60,20 @@ let @/ = l:pattern
 let @" = l:saved_reg
 endfunction
 
-" " Visual Studio specific mappings
-
-" noremap <M-j> :vsc Edit.MoveSelectedLinesDown<CR>
-" noremap <M-k> :vsc Edit.MoveSelectedLinesUp<CR>
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
+" Visual Studio specific mappings
+noremap <M-j> :vsc Edit.MoveSelectedLinesDown<CR>
+noremap <M-k> :vsc Edit.MoveSelectedLinesUp<CR>
 
 map gi :vsc Edit.GoToImplementation<CR>
 map gr :vsc Edit.FindAllReferences<CR>
 map gp :vsc Edit.PeekDefinition<CR>
+
+noremap <leader>q :vsc Window.QuickLaunch<CR>
 nnoremap <leader>m :vsc Edit.NextMethod<CR>
 nnoremap <leader>M :vsc Edit.PreviousMethod<CR>
 nnoremap <leader>b :vsc Debug.ToggleBreakpoint<CR>
 nnoremap <leader>kd :vsc Edit.FormatDocument<CR>
 nnoremap <leader>ks :vsc Edit.SurroundWith<CR>
-noremap <leader>c :vsc Edit.CommentSelection<CR>
-noremap <leader>u :vsc Edit.UncommentSelection<CR>
+noremap <leader>cc :vsc Edit.CommentSelection<CR>
+noremap <leader>cu :vsc Edit.UncommentSelection<CR>
 nnoremap <leader>r : vsc Refactor.Rename<CR>
