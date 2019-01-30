@@ -1,0 +1,157 @@
+{
+    "workbench.iconTheme": "vs-minimal",
+    "files.associations": {
+        "*.Scene.Any": "cpp"
+    },
+    "editor.cursorWidth": 2,
+    "editor.cursorBlinking": "phase",
+    "editor.codeLens": false,
+    "editor.fontFamily": "Source Code Pro, Consolas",
+    "editor.fontSize": 14,
+    "editor.lineNumbers": "relative",
+    "editor.suggest.localityBonus": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.matchBrackets": false, // using Subtle Match Brackets
+
+    // "editor.quickSuggestions": {
+    //     "other": false,
+    //     "comments": false,
+    //     "strings": false
+    // },
+
+    "editor.renderIndentGuides": false,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "subtleBrackets.style": {
+        "borderWidth": "2px"
+    },
+    "explorer.confirmDelete": false,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#ff8000"
+    },
+
+    // VIM 
+    "vim.substituteGlobalFlag": true,
+    "vim.history": 256, 
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.leader": ",",
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "space"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["0"],
+            "after": ["^"]
+        },
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["space"],
+            "after": ["i", "space", "<esc>"]  
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["5", "<C-e>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["5", "<C-y>"]
+        },
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "after": ["\"", "_", "d"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": ["u"],
+            "commands": [{"command": "undo", "args": []}]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": [{"command": "redo", "args": []}]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["0"],
+            "after": ["^"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [",", ","],
+            "after": ["<esc>"]
+        },
+    ],
+}
