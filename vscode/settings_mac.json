@@ -1,0 +1,158 @@
+{
+    "files.associations": {
+        "*.Scene.Any": "cpp"
+    },
+    "editor.cursorWidth": 2,
+    "editor.cursorBlinking": "phase",
+    "editor.codeLens": false,
+    "editor.lineNumbers": "relative",
+    "editor.suggest.localityBonus": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.matchBrackets": false, // using Subtle Match Brackets
+    "editor.renderIndentGuides": false,
+    "editor.smoothScrolling": true,
+    "editor.snippetSuggestions": "top",
+    "editor.tabCompletion": "on",
+    "subtleBrackets.style": {
+        "borderWidth": "2px"
+    },
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#ff8000"
+    },
+    "zenMode.hideStatusBar": false,
+    
+
+    "vim.substituteGlobalFlag": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.leader": ",",
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "space"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["0"],
+            "after": ["^"]
+        },
+        {
+            "before": ["Y"],
+            "after": ["y", "$"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["space"],
+            "after": ["i", "space", "<esc>"]  
+        },
+        {
+            "before": ["g", "p"],
+            "commands": ["editor.action.peekDefinition"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "after": ["\"", "_", "d"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": ["u"],
+            "commands": [{"command": "undo", "args": []}]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": [{"command": "redo", "args": []}]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["0"],
+            "after": ["^"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+        },
+        {
+            "before": ["J"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": ["workbench.action.files.save"]
+        },
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [",", ","],
+            "after": ["<esc>"]
+        },
+    ],
+    "workbench.colorTheme": "eppz!",
+}
