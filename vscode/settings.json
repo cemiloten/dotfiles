@@ -1,10 +1,10 @@
 {
-    "workbench.iconTheme": "vs-minimal",
+    "workbench.iconTheme": "eq-material-theme-icons-ocean",
     "files.associations": {
         "*.Scene.Any": "cpp"
     },
     "editor.cursorWidth": 2,
-    "editor.cursorBlinking": "phase",
+    "editor.cursorBlinking": "smooth",
     "editor.codeLens": false,
     "editor.fontFamily": "Source Code Pro, Consolas",
     "editor.fontSize": 14,
@@ -12,29 +12,44 @@
     "editor.suggest.localityBonus": true,
     "editor.cursorSmoothCaretAnimation": true,
     "editor.matchBrackets": false, // using Subtle Match Brackets
-
-    // "editor.quickSuggestions": {
-    //     "other": false,
-    //     "comments": false,
-    //     "strings": false
-    // },
-
+    "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
+    "editor.renderLineHighlight": "gutter",
+    // "editor.renderWhitespace": "boundary",
+    "editor.smoothScrolling": false,
+    "editor.snippetSuggestions": "top",
     "editor.tabCompletion": "on",
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 100,
-    "subtleBrackets.style": {
-        "borderWidth": "2px"
-    },
-    "explorer.confirmDelete": false,
+    "files.trimTrailingWhitespace": true,
+    "subtleBrackets.style": { "borderWidth": "2px" },
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
     "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#ff8000"
+        "editorCursor.foreground": "#ff8000",
+        "activityBarBadge.background": "#2979FF",
+        "list.activeSelectionForeground": "#2979FF",
+        "list.inactiveSelectionForeground": "#2979FF",
+        "list.highlightForeground": "#2979FF",
+        "scrollbarSlider.activeBackground": "#2979FF50",
+        "editorSuggestWidget.highlightForeground": "#2979FF",
+        "textLink.foreground": "#2979FF",
+        "progressBar.background": "#2979FF",
+        "pickerGroup.foreground": "#2979FF",
+        "tab.activeBorder": "#2979FF",
+        "notificationLink.foreground": "#2979FF",
+        "editorWidget.resizeBorder": "#2979FF",
+        "editorWidget.border": "#2979FF",
+        "settings.modifiedItemIndicator": "#2979FF",
+        "settings.headerForeground": "#2979FF",
+        "panelTitle.activeBorder": "#2979FF",
+        "breadcrumb.activeSelectionForeground": "#2979FF",
+        "menu.selectionForeground": "#2979FF",
+        "menubar.selectionForeground": "#2979FF"
     },
+    "zenMode.hideStatusBar": false,
 
-    // VIM 
+    // VIM
     "vim.substituteGlobalFlag": true,
-    "vim.history": 256, 
     "vim.hlsearch": true,
     "vim.visualstar": true,
     "vim.leader": ",",
@@ -53,23 +68,31 @@
             "before": ["Y"],
             "after": ["y", "$"]
         },
-        {
-            "before": ["g", "i"],
-            "commands": ["editor.action.goToImplementation"]
-        },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["space"],
-            "after": ["i", "space", "<esc>"]  
+            "after": ["i", "space", "<esc>"]
         },
         {
-            "before": ["<C-j>"],
-            "after": ["5", "<C-e>"]
+            "before": ["<leader>", "f", "d"],
+            "commands": ["editor.action.formatDocument"]
         },
         {
-            "before": ["<C-k>"],
-            "after": ["5", "<C-y>"]
+            "before": ["<leader>", "b"],
+            "commands": ["editor.debug.action.toggleBreakpoint"]
+        },
+        {
+            "before": ["<leader>", "s", "b"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+            "before": ["g", "p"],
+            "commands": ["editor.action.peekDefinition"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
         },
         {
             "before": ["<leader>", "y"],
@@ -83,6 +106,17 @@
             "before": ["<leader>", "d"],
             "after": ["\"", "_", "d"]
         },
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>",
+                "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>",
+                "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+        },
+
         {
             "before": ["J"],
             "commands": ["workbench.action.previousEditor"]
@@ -99,13 +133,17 @@
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
         },
+        // {
+        //     "before": ["u"],
+        //     "commands": [{"command": "undo", "args": []}]
+        // },
+        // {
+        //     "before": ["<C-r>"],
+        //     "commands": [{"command": "redo", "args": []}]
+        // },
         {
-            "before": ["u"],
-            "commands": [{"command": "undo", "args": []}]
-        },
-        {
-            "before": ["<C-r>"],
-            "commands": [{"command": "redo", "args": []}]
+            "before": ["<leader>", "z", "e", "n"],
+            "commands": ["workbench.action.toggleZenMode"]
         },
         {
             "before": ["<C-s>"],
@@ -128,6 +166,17 @@
             "after": ["\"", "+", "p"]
         },
         {
+            "before": ["<C-j>"],
+            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>",
+                "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>",
+                "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+        },
+
+        {
             "before": ["J"],
             "commands": ["workbench.action.previousEditor"]
         },
@@ -144,6 +193,18 @@
             "commands": ["editor.action.outdentLines"]
         },
         {
+            "before": ["<leader>", "f", "d"],
+            "commands": ["editor.action.formatDocument"]
+        },
+        {
+            "before": ["<leader>", "f", "f"],
+            "commands": ["editor.action.formatSelection"]
+        },
+        {
+            "before": ["<leader>", "z", "e", "n"],
+            "commands": ["workbench.action.toggleZenMode"]
+        },
+        {
             "before": ["<C-s>"],
             "commands": ["workbench.action.files.save"]
         },
@@ -154,4 +215,5 @@
             "after": ["<esc>"]
         },
     ],
+    "workbench.colorTheme": "eppz!",
 }
