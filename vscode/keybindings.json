@@ -1,25 +1,46 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "ctrl+e",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Execute in Max"
+        "key": "shift+space",
+        "command": "editor.action.moveCarretRightAction",
+        "when": "textInputFocus"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "workbench.action.quickOpen"
+        "key": "ctrl+,",
+        "command": "workbench.action.showAllSymbols"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+
+    // Unbind old shortcuts
+    {
+        "key": "ctrl+,",
+        "command": "-workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
         "when": "inFilesPicker && inQuickOpen"
     },
     {
-        "key": "ctrl+oem_7",
-        "command": "workbench.action.terminal.focus"
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
     },
     {
-        "key": "shift+space",
-        "command": "editor.action.moveCarretRightAction"
-    }
+        "key": "ctrl+0",
+        "command": "-workbench.action.focusSideBar"
+    },
 ]
