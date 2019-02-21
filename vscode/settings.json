@@ -1,9 +1,11 @@
 {
+    // "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.cursorWidth": 2,
     "editor.cursorBlinking": "phase",
     "editor.codeLens": false,
-    "editor.fontSize": 14,
-    // "editor.lineNumbers": "relative",
     "editor.matchBrackets": false, // using Subtle Match Brackets instead
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
@@ -23,6 +25,10 @@
     "vim.enableNeovim": true,
     "vim.neovimPath": "C:\\Neovim\\bin\\nvim.exe",
     "vim.hlsearch": true,
+    "vim.handleKeys": {
+      "<C-d>": true,
+      "<C-f>": false
+    },
     "vim.leader": ",",
     "vim.sneak": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
@@ -33,6 +39,11 @@
         {
             "before": ["0"],
             "after": ["^"]
+        },
+        // Keep indentation when replacing whole line
+        {
+            "before": ["c", "c"],
+            "after": ["^", "C"]
         },
         // Yank to end of line
         {
@@ -76,6 +87,22 @@
             "commands": [":nohl"]
         },
         {
+            "before": ["<leader>", "b"],
+            "commands": ["bookmarks.toggle"]
+        },
+        {
+            "before": ["<leader>", "j", "b"],
+            "commands": ["bookmarks.jumpToNext"]
+        },
+        {
+            "before": ["<leader>", "k", "b"],
+            "commands": ["bookmarks.jumpToPrevious"]
+        },
+        {
+            "before": ["<leader>", "B"],
+            "commands": ["bookmarks.list"]
+        },
+        {
             "before": ["<leader>", "w"],
             "commands": [":wq"]
         },
@@ -92,10 +119,6 @@
         {
             "before": ["<leader>", "f", "d"],
             "commands": ["editor.action.formatDocument"]
-        },
-        {
-            "before": ["<leader>", "b"],
-            "commands": ["editor.debug.action.toggleBreakpoint"]
         },
         {
             "before": ["<leader>", "s", "b"],
@@ -160,6 +183,10 @@
             "after": ["a", "}", "o", "k", "V"]
         },
         {
+            "before": ["p"],
+            "after": ["p", "g", "v", "y"]
+        },
+        {
             "before": ["<leader>", "y"],
             "after": ["\"", "+", "y"]
         },
@@ -177,7 +204,10 @@
             "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>",
                 "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
         },
-
+        {
+            "before": ["<leader>", "<leader>"],
+            "commands": ["workbench.action.showCommands"]
+        },
         {
             "before": ["J"],
             "commands": ["workbench.action.previousEditor"]
@@ -219,4 +249,17 @@
     ],
     "workbench.iconTheme": "vscode-icons",
     "search.location": "sidebar",
+    "[csharp]": {
+
+    },
+    "files.exclude": {
+      "**/*.anim": true,
+      "**/*.controller": true,
+      "**/*.lock": true,
+      "**/*.ide": true,
+      "**/*.hdr": true,
+      "**/*.mixer": true,
+      "**/*.mp3": true,
+      "**/Trash": true
+    },
 }
