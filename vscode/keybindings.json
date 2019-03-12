@@ -19,6 +19,26 @@
         "command": "workbench.action.quickOpenSelectPrevious",
         "when": "inQuickOpen"
     },
+    {
+        "key": ", ,",
+        "command": "workbench.action.showCommands",
+        "when": "!textInputFocus"
+    },
+    {
+        "key": ", w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!editorTextFocus"
+    },
+    {
+        "key": "shift+j",
+        "command": "workbench.action.previousEditor",
+        "when": "!textInputFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "workbench.action.nextEditor",
+        "when": "!textInputFocus"
+    },
 
     // Unbind old shortcuts
     {
