@@ -1,35 +1,56 @@
 {
+    "C_Cpp.clang_format_style": "{ BasedOnStyle: Visual Studio }",
+
     // "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.cursorWidth": 2,
-    "editor.cursorBlinking": "phase",
-    "editor.codeLens": false,
-    "editor.matchBrackets": false, // using Subtle Match Brackets instead
-    "editor.minimap.enabled": false,
+    "editor.codeLens": false, // hide "{n} references" above code
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
     "editor.renderIndentGuides": false,
     "editor.suggest.localityBonus": true,
     "editor.tabCompletion": "on",
     "files.trimTrailingWhitespace": true,
+
+    "editor.matchBrackets": false, // disable to use Suble Brackets only
     "subtleBrackets.style": { "borderWidth": "2px" },
+    "subtleBrackets.pairs": [
+        { "open": "(", "close": ")" },
+        { "open": "[", "close": "]" },
+        { "open": "{", "close": "}" },
+        { "open": "<", "close": ">" },
+    ],
+    "subtleBrackets.parse": false,
     "window.openFilesInNewWindow": "off",
-    "window.openFoldersInNewWindow": "off",
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#ff8000",
         "statusBar.background": "#222222"
     },
     "zenMode.hideStatusBar": false,
 
-    "vim.debug.loggingLevelForConsole": "debug",
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "C:\\Neovim\\bin\\nvim.exe",
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.scrollDown",
+            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
+                "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown"
+            ]
+        },
+        {
+            "command": "multiCommand.scrollUp",
+            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
+                "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp"
+            ]
+        }
+    ],
+
     "vim.hlsearch": true,
     "vim.handleKeys": {
       "<C-d>": true,
       "<C-f>": false
     },
-    "vim.leader": ",",
+    "vim.highlightedyank.enable": true,
     "vim.sneak": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.substituteGlobalFlag": true,
@@ -40,35 +61,21 @@
             "before": ["0"],
             "after": ["^"]
         },
-        // Keep indentation when replacing whole line
-        {
-            "before": ["c", "c"],
-            "after": ["^", "C"]
-        },
-        // Yank to end of line
         {
             "before": ["Y"],
             "after": ["y", "$"]
         },
-        // Don't skip line down when wrapped
         {
             "before": ["j"],
             "after": ["g", "j"]
         },
-        // Don't skip line up when wrapped
         {
             "before": ["k"],
             "after": ["g", "k"]
         },
-        // Join line below, with whitespace
         {
             "before": ["g", "j"],
             "after": ["J"]
-        },
-        // Quick whitespace without entering insert mode
-        {
-            "before": ["space"],
-            "after": ["i", "space", "<esc>"]
         },
         {
             "before": ["<leader>", "<leader>"],
@@ -91,20 +98,8 @@
             "commands": ["bookmarks.toggle"]
         },
         {
-            "before": ["<leader>", "j", "b"],
-            "commands": ["bookmarks.jumpToNext"]
-        },
-        {
-            "before": ["<leader>", "k", "b"],
-            "commands": ["bookmarks.jumpToPrevious"]
-        },
-        {
-            "before": ["<leader>", "B"],
-            "commands": ["bookmarks.list"]
-        },
-        {
             "before": ["<leader>", "w"],
-            "commands": [":wq"]
+            "commands": ["workbench.action.closeActiveEditor"]
         },
         // Insert below while adding an empty line
         {
@@ -119,6 +114,10 @@
         {
             "before": ["<leader>", "f", "d"],
             "commands": ["editor.action.formatDocument"]
+        },
+        {
+            "before": ["<leader>", "f", "f"],
+            "commands": ["editor.action.formatSelection"]
         },
         {
             "before": ["<leader>", "s", "b"],
@@ -137,20 +136,21 @@
             "after": ["\"", "+", "p"]
         },
         {
-            "before": ["<leader>", "d"],
-            "after": ["\"", "_", "d"]
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
+        },
+        {
+            "before": ["<leader>", "<"],
+            "after": ["0", "d", "w"]
         },
         {
             "before": ["<C-j>"],
-            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>", "<C-e>",
-                "<C-e>", "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+            "commands": ["multiCommand.scrollDown"]
         },
         {
             "before": ["<C-k>"],
-            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>", "<C-y>",
-                "<C-y>", "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+            "commands": ["multiCommand.scrollUp"]
         },
-
         {
             "before": ["J"],
             "commands": ["workbench.action.previousEditor"],
@@ -158,14 +158,6 @@
         {
             "before": ["K"],
             "commands": ["workbench.action.nextEditor"]
-        },
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
         },
         {
             "before": ["<C-s>"],
@@ -180,7 +172,7 @@
         // Select in brackets with one line on top (methods, if statements, classes...)
         {
             "before": ["v", "m"],
-            "after": ["a", "}", "o", "k", "V"]
+            "after": ["a", "}", "o", "V"]
         },
         {
             "before": ["p"],
@@ -195,14 +187,16 @@
             "after": ["\"", "+", "p"]
         },
         {
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
+        },
+        {
             "before": ["<C-j>"],
-            "after": ["<C-e>", "<C-e>", "<C-e>", "<C-e>",
-                "<C-e>", "<C-e>", "<C-e>", "<C-e>"]
+            "commands": ["multiCommand.scrollDown"]
         },
         {
             "before": ["<C-k>"],
-            "after": ["<C-y>", "<C-y>", "<C-y>", "<C-y>",
-                "<C-y>", "<C-y>", "<C-y>", "<C-y>"]
+            "commands": ["multiCommand.scrollUp"]
         },
         {
             "before": ["<leader>", "<leader>"],
@@ -233,10 +227,6 @@
             "commands": ["editor.action.formatSelection"]
         },
         {
-            "before": ["<leader>", "z", "e", "n"],
-            "commands": ["workbench.action.toggleZenMode"]
-        },
-        {
             "before": ["<C-s>"],
             "commands": ["workbench.action.files.save"]
         },
@@ -247,11 +237,8 @@
             "after": ["<esc>"]
         },
     ],
-    "workbench.iconTheme": "vscode-icons",
+    "vim.leader": ",",
     "search.location": "sidebar",
-    "[csharp]": {
-
-    },
     "files.exclude": {
       "**/*.anim": true,
       "**/*.controller": true,
@@ -262,4 +249,8 @@
       "**/*.mp3": true,
       "**/Trash": true
     },
+    "cmake.configureOnOpen": true,
+    "workbench.iconTheme": null,
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "dark-plus-syntax"
 }
