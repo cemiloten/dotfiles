@@ -1,9 +1,21 @@
 {
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.suggestSnippets": false,
+
+    "clangd.path": "/usr/local/Cellar/llvm/8.0.0/bin/clangd",
+    "clangd.arguments": [
+        "-log=verbose",
+        "-pretty"
+    ],
+
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.cursorWidth": 2,
     "editor.codeLens": false,
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
     "editor.matchBrackets": false, // using Subtle Match Brackets
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
@@ -19,33 +31,39 @@
       "**/*.mp3": true,
     },
     "files.trimTrailingWhitespace": true,
+    "subtleBrackets.disableNative": true,
     "subtleBrackets.style": { "borderWidth": "2px" },
+    "subtleBrackets.pairs": [
+        { "open": "(", "close": ")" },
+        { "open": "[", "close": "]" },
+        { "open": "{", "close": "}" },
+        { "open": "<", "close": ">" }
+    ],
+    "subtleBrackets.parse": false,
     "window.openFilesInNewWindow": "off",
-    "window.openFoldersInNewWindow": "off",
     "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#ff8000",
         "statusBar.background": "#222222"
     },
-    "window.zoomLevel": 1,
+    "workbench.activityBar.visible": false,
     "zenMode.hideStatusBar": false,
 
     "multiCommand.commands": [
         {
             "command": "multiCommand.scrollDown",
-            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
-                "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown"
+            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
+                "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
             ]
         },
         {
             "command": "multiCommand.scrollUp",
-            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
-                "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp"
+            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
+                "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
             ]
         }
     ],
 
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/Cellar/neovim/0.3.4/bin/nvim",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 100,
     "vim.hlsearch": true,
     "vim.leader": ",",
     "vim.sneak": true,
@@ -57,6 +75,10 @@
         {
             "before": ["0"],
             "after": ["^"]
+        },
+        {
+            "before": ["^"],
+            "after": ["0"]
         },
         // Yank to end of line
         {
@@ -78,10 +100,9 @@
             "before": ["g", "j"],
             "after": ["J"]
         },
-        // Quick whitespace without entering insert mode
         {
-            "before": ["space"],
-            "after": ["i", "space", "<esc>"]
+            "before": ["g", "k"],
+            "after": ["l", "c", "i", "w", "<cr>","<esc>"]
         },
         {
             "before": ["<leader>", "<leader>"],
@@ -104,20 +125,12 @@
             "commands": ["bookmarks.toggle"]
         },
         {
-            "before": ["<leader>", "j", "b"],
-            "commands": ["bookmarks.jumpToNext"]
-        },
-        {
-            "before": ["<leader>", "k", "b"],
-            "commands": ["bookmarks.jumpToPrevious"]
-        },
-        {
-            "before": ["<leader>", "B"],
-            "commands": ["bookmarks.list"]
-        },
-        {
             "before": ["<leader>", "w"],
             "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>", "<"],
+            "after": ["0", "d", "w"]
         },
         // Insert below while adding an empty line
         {
@@ -147,7 +160,11 @@
         },
         {
             "before": ["<leader>", "p"],
-            "after": ["\"", "+", "p"]
+            "after": ["\"", "+", "p"],
+        },
+        {
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
         },
         {
             "before": ["<C-j>"],
@@ -174,7 +191,11 @@
         // Select in brackets with one line on top (methods, if statements, classes...)
         {
             "before": ["v", "m"],
-            "after": ["a", "}", "o", "k", "V"]
+            "after": ["a", "}", "o", "V"]
+        },
+        {
+            "before": ["v", "M"],
+            "after": ["a", "}", "o", "V"]
         },
         {
             "before": ["p"],
@@ -231,5 +252,8 @@
             "after": ["<esc>"]
         },
     ],
-    "cmake.configureOnOpen": true
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "window.zoomLevel": 0,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorTheme": "dark-plus-syntax"
 }
