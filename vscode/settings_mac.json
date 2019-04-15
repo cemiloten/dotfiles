@@ -1,7 +1,7 @@
 {
-    "C_Cpp.autocomplete": "Disabled",
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "C_Cpp.suggestSnippets": false,
+    "clang-format.executable": "/usr/local/Cellar/llvm/8.0.0/bin/clang-format",
+    "clang-format.language.cpp.style":
+        "{ BasedOnStyle: LLVM, DerivePointerAlignment: false, PointerAlignment: Left }",
 
     "clangd.path": "/usr/local/Cellar/llvm/8.0.0/bin/clangd",
     "clangd.arguments": [
@@ -14,7 +14,9 @@
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.cursorWidth": 2,
     "editor.codeLens": false,
+    "editor.folding": false,
     "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    "editor.gotoLocation.multiple": "goto",
     "editor.fontSize": 13,
     "editor.matchBrackets": false, // using Subtle Match Brackets
     "editor.minimap.enabled": false,
@@ -42,28 +44,29 @@
     "subtleBrackets.parse": false,
     "window.openFilesInNewWindow": "off",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#222222"
+        // "statusBar.background": "#222222"
     },
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "zenMode.hideStatusBar": false,
+    "zenMode.hideLineNumbers": false,
 
     "multiCommand.commands": [
         {
             "command": "multiCommand.scrollDown",
-            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
-                "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
+            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown",
+                "scrollLineDown", "scrollLineDown",
             ]
         },
         {
             "command": "multiCommand.scrollUp",
-            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
-                "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
+            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp",
+                "scrollLineUp", "scrollLineUp",
             ]
         }
     ],
 
     "vim.highlightedyank.enable": true,
-    "vim.highlightedyank.duration": 100,
+    "vim.highlightedyank.duration": 150,
     "vim.hlsearch": true,
     "vim.leader": ",",
     "vim.sneak": true,
@@ -168,11 +171,11 @@
         },
         {
             "before": ["<C-j>"],
-            "commands": ["multiCommand.scrollDown"]
+            "after": ["5", "<C-e>"]
         },
         {
             "before": ["<C-k>"],
-            "commands": ["multiCommand.scrollUp"]
+            "after": ["5", "<C-y>"]
         },
         {
             "before": ["J"],
@@ -242,7 +245,7 @@
             "commands": ["editor.action.formatDocument"]
         },
         {
-            "before": ["<leader>", "f", "f"],
+            "before": ["<leader>", "f", "s"],
             "commands": ["editor.action.formatSelection"]
         },
     ],
@@ -251,9 +254,18 @@
             "before": [",", ","],
             "after": ["<esc>"]
         },
+        {
+            "before": ["j", "k"],
+            "after": ["<esc>"]
+        },
     ],
-    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0,
     "extensions.ignoreRecommendations": true,
-    "workbench.colorTheme": "dark-plus-syntax"
+    "workbench.colorTheme": "Solarized Light",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "breadcrumbs.enabled": false
 }
+
