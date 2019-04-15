@@ -5,6 +5,8 @@ filetype off
 
 if has('win32') || has('win64')
     let g:python3_host_prog = 'C:\\Users\\Cemil Oten\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe'
+elseif has('mac')
+    let g:python3_host_prog = '/usr/local/bin/python3'
 else
     let g:python3_host_prog = '/usr/bin/python3.6'
 endif
@@ -21,8 +23,8 @@ call plug#begin('~/.vim/plugged')
             \ 'branch': 'next', 'do': 'bash install.sh', }
     endif
 
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'justinmk/vim-sneak'
@@ -38,10 +40,15 @@ call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 
+
 set hidden
 if has('win32') || has('win64')
     let g:LanguageClient_serverCommands = {
         \ 'cpp': ['C:\Program Files (x86)\LLVM\bin\clangd.exe'],
+        \ }
+elseif has('mac')
+    let g:LanguageClient_serverCommands = {
+        \ 'cpp': ['/usr/local/Cellar/llvm/8.0.0/bin/clangd'],
         \ }
 else
     let g:LanguageClient_serverCommands = {
@@ -49,18 +56,6 @@ else
         \ }
 endif
 
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-if has('win32') || has('win64')
-    map <leader>fd :py3file C:\Program Files (x86)\LLVM\share\clang\clang-format.py<CR>
-else
-    map <leader>fd :py3file /home/cemil/llvm/share/clang/clang-format.py<CR>
-endif
-
-" Load config (vimrc) file
-:command! Init :exe 'edit '.stdpath('config').'/init.vim'
 
 " Colors
 syntax on
@@ -68,7 +63,7 @@ if (has('termguicolors'))
     set termguicolors
 endif
 set background=dark
-colorscheme seoul256
+colorscheme gruvbox
 
 
 set history=1024
@@ -93,13 +88,6 @@ set report=0
 set wildmenu
 set lazyredraw
 set showmatch
-
-set wildignore=*.o,*~,*.d,*.obj,*.class,*.pyc,*.bak,*.swp,*.orig
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
 
 
 """"""" SEARCHING
@@ -141,17 +129,46 @@ noremap <leader>p "+p
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" save file
-noremap <C-s> :w<CR>
 
-" quit file
-noremap <leader>w :q<CR>
+" save file
+nnoremap zz :w<CR>
+noremap <leader>w :confirm quit<CR>
 
 " exit terminal (neovim)
 tnoremap <esc> <C-\><C-n>
 
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+if has('win32') || has('win64')
+    map <leader>fd :py3file C:\Program Files (x86)\LLVM\share\clang\clang-format.py<CR>
+elseif has('mac')
+    map <leader>fd :py3file /usr/local/Cellar/llvm/8.0.0/share/clang/clang-format.py<CR>
+else
+    map <leader>fd :py3file /home/cemil/llvm/share/clang/clang-format.py<CR>
+endif
+
+" Load config (vimrc) file
+:command! Init :exe 'edit '.stdpath('config').'/init.vim'
+
+" fuzzy finder
+noremap <leader>. :FZF<CR>
+
+" Split terminal
+:command! T    :vsplit | terminal
+:command! Te   :vsplit | terminal
+:command! Ter  :vsplit | terminal
+:command! Term :vsplit | terminal
 
 " remove ugly complete menu in nvim-qt
 if has('win32') || has('win64')
     GuiPopupmenu 0
+endif
+
+set wildignore=*.o,*~,*.d,*.obj,*.class,*.pyc,*.bak,*.swp,*.orig
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
