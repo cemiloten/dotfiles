@@ -1,20 +1,30 @@
-{
-    "C_Cpp.clang_format_style": "{ BasedOnStyle: Visual Studio }",
 
-    // "editor.acceptSuggestionOnCommitCharacter": false,
+{
+    "C_Cpp.suggestSnippets": false,
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.formatting": "Disabled",
+
+    "clang-format.executable": "C:\\Program Files (x86)\\LLVM\\bin\\clang-format.exe",
+    "clang-format.style": "{ BasedOnStyle: LLVM, DerivePointerAlignment: false, PointerAlignment: Left }",
+
+    "clangd.path": "C:\\Program Files (x86)\\LLVM\\bin\\clangd.exe",
+
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.cursorWidth": 2,
     "editor.codeLens": false, // hide "{n} references" above code
+    "editor.folding": false,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
-    "editor.fontSize": 14,
+    "editor.fontSize": 15,
+    // "editor.letterSpacing": 0.0,
+    "editor.matchBrackets": false, // disable to use Suble Brackets only
+    "editor.minimap.enabled": false,
     "editor.renderIndentGuides": false,
     "editor.suggest.localityBonus": true,
     "editor.tabCompletion": "on",
     "files.trimTrailingWhitespace": true,
-
-    "editor.matchBrackets": false, // disable to use Suble Brackets only
     "subtleBrackets.style": { "borderWidth": "2px" },
     "subtleBrackets.pairs": [
         { "open": "(", "close": ")" },
@@ -24,33 +34,34 @@
     ],
     "subtleBrackets.parse": false,
     "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "on",
     "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#ff8000",
-        "statusBar.background": "#222222"
+        "statusBar.background": "#333333",
+        "editorCursor.foreground": "#ff8800",
+        "editorCursor.background": "#ffffff"
     },
     "zenMode.hideStatusBar": false,
 
     "multiCommand.commands": [
         {
             "command": "multiCommand.scrollDown",
-            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown",
-                "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown", "scrollLineDown"
+            "sequence": [ "scrollLineDown", "scrollLineDown", "scrollLineDown",
+                "scrollLineDown", "scrollLineDown"
             ]
         },
         {
             "command": "multiCommand.scrollUp",
-            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp",
-                "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp", "scrollLineUp"
+            "sequence": [ "scrollLineUp", "scrollLineUp", "scrollLineUp",
+                "scrollLineUp", "scrollLineUp"
             ]
         }
     ],
 
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "C:\\Neovim\\bin\\nvim.exe",
     "vim.hlsearch": true,
-    "vim.handleKeys": {
-      "<C-d>": true,
-      "<C-f>": false
-    },
     "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 100,
     "vim.sneak": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.substituteGlobalFlag": true,
@@ -78,6 +89,10 @@
             "after": ["J"]
         },
         {
+            "before": ["g", "k"],
+            "after": ["w", "i", "<cr>", "<esc>", "w"]
+        },
+        {
             "before": ["<leader>", "<leader>"],
             "commands": ["workbench.action.showCommands"]
         },
@@ -101,12 +116,18 @@
             "before": ["<leader>", "w"],
             "commands": ["workbench.action.closeActiveEditor"]
         },
-        // Insert below while adding an empty line
+        {
+            "before": ["<leader>", "s"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {
+            "before": ["<leader>", "<tab>"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
         {
             "before": ["<leader>", "o"],
             "after": ["o", "<cr>"]
         },
-        // Insert above while adding an empty line
         {
             "before": ["<leader>", "O"],
             "after": ["O", "<esc>", "O"]
@@ -114,14 +135,6 @@
         {
             "before": ["<leader>", "f", "d"],
             "commands": ["editor.action.formatDocument"]
-        },
-        {
-            "before": ["<leader>", "f", "f"],
-            "commands": ["editor.action.formatSelection"]
-        },
-        {
-            "before": ["<leader>", "s", "b"],
-            "commands": ["workbench.action.toggleSidebarVisibility"]
         },
         {
             "before": ["g", "p"],
@@ -145,11 +158,11 @@
         },
         {
             "before": ["<C-j>"],
-            "commands": ["multiCommand.scrollDown"]
+            "after": ["5", "<C-e>"]
         },
         {
             "before": ["<C-k>"],
-            "commands": ["multiCommand.scrollUp"]
+            "after": ["5", "<C-y>"]
         },
         {
             "before": ["J"],
@@ -158,10 +171,6 @@
         {
             "before": ["K"],
             "commands": ["workbench.action.nextEditor"]
-        },
-        {
-            "before": ["<C-s>"],
-            "commands": ["workbench.action.files.save"]
         },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -220,24 +229,21 @@
         },
         {
             "before": ["<leader>", "f", "d"],
-            "commands": ["editor.action.formatDocument"]
-        },
-        {
-            "before": ["<leader>", "f", "f"],
             "commands": ["editor.action.formatSelection"]
-        },
-        {
-            "before": ["<C-s>"],
-            "commands": ["workbench.action.files.save"]
         },
     ],
     "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<esc>"]
+        },
         {
             "before": [",", ","],
             "after": ["<esc>"]
         },
     ],
     "vim.leader": ",",
+
     "search.location": "sidebar",
     "files.exclude": {
       "**/*.anim": true,
@@ -250,7 +256,12 @@
       "**/Trash": true
     },
     "cmake.configureOnOpen": true,
-    "workbench.iconTheme": null,
-    "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "dark-plus-syntax"
+    "workbench.activityBar.visible": true,
+    "extensions.ignoreRecommendations": false,
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "dark-plus-syntax",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    }
 }

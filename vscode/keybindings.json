@@ -1,3 +1,4 @@
+
 // Place your key bindings in this file to overwrite the defaults
 [
     {
@@ -7,7 +8,7 @@
     },
     {
         "key": "ctrl+,",
-        "command": "workbench.action.showAllSymbols"
+        "command": "workbench.action.showCommands"
     },
     {
         "key": "ctrl+n",
@@ -22,22 +23,32 @@
     {
         "key": ", ,",
         "command": "workbench.action.showCommands",
-        "when": "!textInputFocus"
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen && !searchViewletVisible"
+    },
+    {
+        "key": ", .",
+        "command": "workbench.action.quickOpen",
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen && !searchViewletVisible"
+    },
+    {
+        "key": ", tab",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen && !searchViewletVisible"
     },
     {
         "key": ", w",
         "command": "workbench.action.closeActiveEditor",
-        "when": "!editorTextFocus"
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen && !searchViewletVisible"
     },
     {
         "key": "shift+j",
         "command": "workbench.action.previousEditor",
-        "when": "!textInputFocus"
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen"
     },
     {
         "key": "shift+k",
         "command": "workbench.action.nextEditor",
-        "when": "!textInputFocus"
+        "when": "!textInputFocus && !editorTextFocus && !inQuickOpen"
     },
 
     // Unbind old shortcuts
