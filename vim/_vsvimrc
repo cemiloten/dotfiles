@@ -8,72 +8,50 @@ set incsearch
 set hlsearch
 set gdefault
 
-set scrolloff=3 " keep 3 lines below and above cursor
+noremap \ ,
+let mapleader = ","
+imap jk <esc>
+imap kj <esc>
 
 map Y y$
-map 0 ^
-imap ,, <esc>
-" when )} is added automatically quick move without exiting insert mode
+noremap 0 ^
+noremap ^ 0
+noremap j gj
+noremap k gk
+noremap gj J
+noremap <leader>o o<CR>
+noremap <leader>O O<esc>O
+
+" move to the right in insert mode
 inoremap <S-space> <Right>
+" inoremap <C-n> <Down>
+" inoremap <C-p> <Up>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
 
-let mapleader = ","
-nnoremap <leader><space> :nohlsearch<CR>
-
-" yank to clipboard (like ctrl+c)
+noremap <S-j> :vsc Window.PreviousTab<CR>
+noremap <S-k> :vsc Window.NextTab<CR>
+noremap <C-j> 5<C-e>
+noremap <C-k> 5<C-y>
 noremap <leader>y "+y
-
-" paste from clipboard (like ctrl+v)
 noremap <leader>p "+p
 
-" delete without copying
-nnoremap <leader>d "_d
+vnoremap m aBVo^
 
-" redo last command
-map <leader>. :@:<CR>
-
-noremap <S-j> <C-d>
-noremap <S-k> <C-u>
-noremap <C-j> 4<C-e>
-noremap <C-k> 4<C-y>
-noremap <leader>j gt
-noremap <leader>k gT
-noremap <leader>h <C-w>h
-noremap <leader>l <C-w>l
-
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-function! VisualSelection(direction, extra_filter) range
-let l:saved_reg = @"
-execute "normal! vgvy"
-
-let l:pattern = escape(@", "\\/.*'$^~[]")
-let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-if a:direction == 'gv'
-    call CmdLine("Ack '" . l:pattern . "' " )
-elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-endif
-
-let @/ = l:pattern
-let @" = l:saved_reg
-endfunction
-
-" Visual Studio specific mappings
-noremap <M-j> :vsc Edit.MoveSelectedLinesDown<CR>
-noremap <M-k> :vsc Edit.MoveSelectedLinesUp<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 
 map gi :vsc Edit.GoToImplementation<CR>
 map gr :vsc Edit.FindAllReferences<CR>
 map gp :vsc Edit.PeekDefinition<CR>
+map gh :vsc Edit.QuickInfo<CR>
 
-noremap <leader>q :vsc Window.QuickLaunch<CR>
-nnoremap <leader>m :vsc Edit.NextMethod<CR>
-nnoremap <leader>M :vsc Edit.PreviousMethod<CR>
-nnoremap <leader>b :vsc Debug.ToggleBreakpoint<CR>
-nnoremap <leader>kd :vsc Edit.FormatDocument<CR>
-nnoremap <leader>ks :vsc Edit.SurroundWith<CR>
-noremap <leader>cc :vsc Edit.CommentSelection<CR>
-noremap <leader>cu :vsc Edit.UncommentSelection<CR>
-nnoremap <leader>r : vsc Refactor.Rename<CR>
+noremap <leader>s :w<CR>
+noremap <leader><leader> :vsc Window.QuickLaunch<CR>
+noremap <leader>w        :vsc Window.CloseDocumentWindow<CR>
+noremap <leader>.        :vsc Edit.GoToFile<CR>
+noremap <leader>m        :vsc Edit.GoToSymbol<CR>
+noremap <leader>fd       :vsc Edit.FormatDocument<CR>
+noremap <leader>ff       :vsc Edit.FormatSelection<CR>
+noremap <leader>ks       :vsc Edit.SurroundWith<CR>
+noremap <leader>cc       :vsc Edit.CommentSelection<CR>
+noremap <leader>cu       :vsc Edit.UncommentSelection<CR>
