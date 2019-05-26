@@ -1,0 +1,50 @@
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set hlsearch
+set gdefault
+
+set surround
+set visualbell
+set noerrorbells
+
+noremap \ ,
+let mapleader = ","
+imap jk <esc>
+imap kj <esc>
+
+map Y y$
+noremap 0 ^
+noremap ^ 0
+noremap j gj
+noremap k gk
+noremap gj J
+noremap <leader>o o<CR>
+noremap <leader>O O<esc>O
+
+" move to the right in insert mode
+inoremap <S-space> <Right>
+
+noremap <C-j> 5<C-e>
+noremap <C-k> 5<C-y>
+noremap <leader>y "+y
+noremap <leader>p "+p
+
+vnoremap m aBVo^
+
+nnoremap <leader><space> :nohlsearch<CR>
+
+
+
+" RIDER SHORTCUTS
+map gi :action GoToImplementation<CR>
+
+nmap <S-j> :action PreviousTab<CR>
+nmap <S-k> :action NextTab<CR>
+
+nmap <leader>w :action CloseActiveTab<CR>
+nmap <leader>s :action SaveDocument<CR>
+
+nmap <leader>m :action GotoSymbol<CR>
+nmap <leader>. :action GotoFile<CR>
