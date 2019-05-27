@@ -23,22 +23,22 @@ noremap gj J
 noremap <leader>o o<CR>
 noremap <leader>O O<esc>O
 
-" move to the right in insert mode
-inoremap <S-space> <Right>
+vnoremap m aBVo^
 
 noremap <C-j> 5<C-e>
 noremap <C-k> 5<C-y>
 noremap <leader>y "+y
 noremap <leader>p "+p
 
-vnoremap m aBVo^
 
 nnoremap <leader><space> :nohlsearch<CR>
 
-
-
 " RIDER SHORTCUTS
-map gi :action GoToImplementation<CR>
+nmap gh :action ShowErrorDescription<CR>
+nmap gi :action GoToImplementation<CR>
+
+nmap <leader>fd :action ReformatCode<CR>
+vmap <leader>fd :action ReformatCode<CR>
 
 nmap <S-j> :action PreviousTab<CR>
 nmap <S-k> :action NextTab<CR>
@@ -46,5 +46,6 @@ nmap <S-k> :action NextTab<CR>
 nmap <leader>w :action CloseActiveTab<CR>
 nmap <leader>s :action SaveDocument<CR>
 
+nmap <leader><leader> :action SearchEverywhere<CR>
 nmap <leader>m :action GotoSymbol<CR>
 nmap <leader>. :action GotoFile<CR>
