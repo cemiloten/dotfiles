@@ -1,3 +1,5 @@
+set clipboard+=ideaput
+
 set ignorecase
 set smartcase
 set hlsearch
@@ -34,6 +36,9 @@ noremap <leader>p "+p
 nnoremap <leader><space> :nohlsearch<CR>
 
 " RIDER SHORTCUTS
+imap <C-n> <ESC>:action HippieCompletion<CR>a
+imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+
 nmap gh :action ShowErrorDescription<CR>
 nmap gi :action GoToImplementation<CR>
 
@@ -43,9 +48,11 @@ vmap <leader>fd :action ReformatCode<CR>
 nmap <S-j> :action PreviousTab<CR>
 nmap <S-k> :action NextTab<CR>
 
-nmap <leader>w :action CloseActiveTab<CR>
+nmap <leader>w :action CloseEditor<CR>
 nmap <leader>s :action SaveDocument<CR>
+nmap <leader>r :action RenameElement<CR>
 
-nmap <leader><leader> :action SearchEverywhere<CR>
-nmap <leader>m :action GotoSymbol<CR>
+nmap <leader><leader> :action GotoAction<CR>
+" nmap <leader>m :action GotoSymbol<CR>
+nmap <leader>m :action FileStructurePopup<CR>
 nmap <leader>. :action GotoFile<CR>
