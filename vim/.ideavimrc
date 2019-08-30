@@ -1,15 +1,14 @@
-set clipboard+=ideaput
-
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 set hlsearch
 set gdefault
-
-set surround
 set visualbell
 set noerrorbells
+
+set surround
+set commentary
 
 noremap \ ,
 let mapleader = ","
@@ -19,40 +18,52 @@ imap kj <esc>
 map Y y$
 noremap 0 ^
 noremap ^ 0
-noremap j gj
-noremap k gk
 noremap gj J
 noremap <leader>o o<CR>
 noremap <leader>O O<esc>O
 
 vnoremap m aBVo^
 
+" Search for text under visual selection
+vnoremap // y/\V<C-R>"<CR>
+
 noremap <C-j> 5<C-e>
 noremap <C-k> 5<C-y>
-noremap <leader>y "+y
-noremap <leader>p "+p
 
+noremap <leader>y "+y
+noremap <leader>Y "+Y
+noremap <leader>p "+p
+noremap <leader>P "+P
+
+nnoremap <S-j> gT
+nnoremap <S-k> gt
+
+nnoremap <A-j> ]}
+nnoremap <A-k> [{
+vnoremap <A-j> ]}
+vnoremap <A-k> [{
 
 nnoremap <leader><space> :nohlsearch<CR>
 
+
 " RIDER SHORTCUTS
-imap <C-n> <ESC>:action HippieCompletion<CR>a
-imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+nnoremap gh :action ShowErrorDescription<CR>
 
-nmap gh :action ShowErrorDescription<CR>
-nmap gi :action GoToImplementation<CR>
+nnoremap <leader>w :action CloseEditor<CR>
+nnoremap <leader>s :action SaveDocument<CR>
+nnoremap <leader>r :action RenameElement<CR>
 
-nmap <leader>fd :action ReformatCode<CR>
-vmap <leader>fd :action ReformatCode<CR>
 
-nmap <S-j> :action PreviousTab<CR>
-nmap <S-k> :action NextTab<CR>
 
-nmap <leader>w :action CloseEditor<CR>
-nmap <leader>s :action SaveDocument<CR>
-nmap <leader>r :action RenameElement<CR>
+nnoremap <leader>fd :action ReformatCode<CR>
+nnoremap <leader>b :action ToggleBookmark<CR>
+nnoremap <leader><leader> :action GotoAction<CR>
+nnoremap <leader>m :action FileStructurePopup<CR>
+nnoremap <leader>. :action GotoFile<CR>
 
-nmap <leader><leader> :action GotoAction<CR>
-" nmap <leader>m :action GotoSymbol<CR>
-nmap <leader>m :action FileStructurePopup<CR>
-nmap <leader>. :action GotoFile<CR>
+vnoremap <leader>fd :action ReformatCode<CR>
+vnoremap <leader>b :action ToggleBookmark<CR>
+vnoremap <leader><leader> :action GotoAction<CR>
+vnoremap <leader>m :action FileStructurePopup<CR>
+vnoremap <leader>. :action GotoFile<CR>
+
